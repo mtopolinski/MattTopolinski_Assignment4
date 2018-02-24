@@ -21,7 +21,7 @@ exports.create = function(req, res) {
 
 exports.findUser = function(req, res) {
     // Retrieve Note matching Username
-    Note.findByUsername(req.params.noteUsername, function(err, data){
+    Note.find(req.params.noteUsername, function(err, data){
         if(err) {
             res.status(500).send({message: "Could not find matching Username " + req.params.noteUsername});
         } else {
@@ -33,7 +33,7 @@ exports.findUser = function(req, res) {
 
 exports.findTitle = function(req, res) {
     // Find a single note with a Title
-    Note.findByTitle(req.params.noteTitle, function(err, data) {
+    Note.find(req.params.noteTitle, function(err, data) {
         if(err) {
             res.status(500).send({message: "Could not find matching Title " + req.params.noteTitle});
         } else {
@@ -44,12 +44,12 @@ exports.findTitle = function(req, res) {
 
 exports.update = function(req, res) {
     // Update a note with a specified Title
-    Note.findByTitle(req.params.noteTitle, function(err, note) {
+    Note.find(req.params.noteTitle, function(err, note) {
         if(err) {
             res.status(500).send({message: "Could not find Title " + req.params.noteTitle});
         }
 
-        note.username = req.body.username;
+        note.title = req.body.title;
 
         note.save(function(err, data){
             if(err) {

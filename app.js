@@ -34,6 +34,10 @@ app.use('/listEdit', listEdit);
 app.use('/login', login);
 //app.use('/api', routesApi);
 
+app.get('/models/db', function(req, res) {
+    var cursor = dbURI.collection('Assign4').find();
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

@@ -13,7 +13,7 @@ exports.create = function(req, res) {
             console.log(err);
             res.status(500).send({message: "Some error occurred while creating the Note."});
         } else {
-            res.send(data);
+            res.json(data);
         }
     });
 };
@@ -25,7 +25,7 @@ exports.findUser = function(req, res) {
         if(err) {
             res.status(500).send({message: "Could not find matching Username " + req.params.noteUsername});
         } else {
-            res.send(data);
+            res.json(data);
         }
     });
 };
@@ -37,7 +37,7 @@ exports.findTitle = function(req, res) {
         if(err) {
             res.status(500).send({message: "Could not find matching Title " + req.params.noteTitle});
         } else {
-            res.send(data);
+            res.json(data);
         }
     });
 };
@@ -55,7 +55,7 @@ exports.update = function(req, res) {
             if(err) {
                 res.status(500).send({message: "Could not update note by Title " + req.params.noteTitle});
             } else {
-                res.send(data);
+                res.json(data);
             }
         });
     });
@@ -67,7 +67,7 @@ exports.delete = function(req, res) {
         if(err) {
             res.status(500).send({message: "Could not locate Title " + req.params.title});
         } else {
-            res.send({message: "Note deleted"})
+            res.json({message: "Note deleted"})
         }
     });
 };

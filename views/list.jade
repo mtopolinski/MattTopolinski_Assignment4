@@ -46,14 +46,16 @@ block content
             | <br /><br />
 
 
-        form(action='/Assign4/#{Assign4._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
-            input(type='hidden',value='DELETE',name='_method')
-            button(type='submit').
-                Delete
-        p
-            a(href='/Assign4/#{blob._id}/edit') Edit
-        p
-            a(href='/Assign4/#{blob._id}') Show
+    .row
+        .col-xs-12.col-md-6
+            .form-group
+            a(href='/users/:id/notes') Find Note By Username
+            h1 Username List
+            <tr>
+            <td>
+            a(href='/users/test/notes')
+            //a(href='/users/"<%= note[i]._username%>"/notes><%= note[i].username%')
+
 
     .row
         .col-xs-12.col-md-6

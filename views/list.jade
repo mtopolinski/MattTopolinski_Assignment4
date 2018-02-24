@@ -1,0 +1,53 @@
+extends layout
+
+block content
+    body
+        .navbar.navbar-default.navbar-fixed-top
+            .container
+                .navbar-header
+                    a.navbar-brand Site Navigation
+                    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                #navbar-main.navbar-collapse.collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href='/login/') Login Page
+                        li
+                            a(href='/listEdit/') List Editor
+    .row.page-header
+        .col-lg-12
+            h1 Assignment 3 List Page
+            h3 Please refer to the following list of notes:
+    .row
+        .col-xs-12.col-md-6
+        p
+            P
+            a(href='/listEdit/') Listing 1
+            | <br /><br />
+            a(href='/listEdit/') Listing 2
+            | <br /><br />
+            a(href='/listEdit/') Listing 3
+            | <br /><br />
+            a(href='/listEdit/') Listing 4
+            | <br /><br />
+            a(href='/listEdit/') Listing 5
+            | <br /><br />
+            a(href='/listEdit/') Listing 6
+            | <br /><br />
+            a(href='/listEdit/') Listing 7
+            | <br /><br />
+            a(href='/listEdit/') Listing 8
+            | <br /><br />
+            a(href='/listEdit/') Listing 9
+            | <br /><br />
+            a(href='/listEdit/') Listing 10
+            | <br /><br />
+    .row
+        .col-xs-12.col-md-6
+            .form-group
+            a(href='/listEdit'): button.btn.btn-default.pull-left(type="button") Add a New List
+        .col-xs-12.col-md-4
+            | <br /><br />
+            | <br /><br />

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    body
+        .navbar.navbar-default.navbar-fixed-top
+            .container
+                .navbar-header
+                    a.navbar-brand Site Navigation
+                    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                #navbar-main.navbar-collapse.collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href='/login/') Login Page
+                        li
+                            a(href='/list/') List Page
+    .row.page-header
+        .col-lg-12
+            h1 Assignment 3 List Editor
+            h3 To update the current list, please enter your data below:
+    .row
+        .col-xs-12.col-md-6
+            .form-group
+                label.col-sm-2.control-label(for="notes") Notes
+                .col-sm-10
+                    textarea#notes.form-control(notes="notes", rows="20")
+                    <br /><br/>
+            a(href='/listEdit'): button.btn.btn-default.pull-right(type="button") Delete
+            a(href='/list'): button.btn.btn-primary.pull-right(type="button") Save
+        .col-xs-12.col-md-4
+            <br /><br/>

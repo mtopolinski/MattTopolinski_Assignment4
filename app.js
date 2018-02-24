@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-require('./models/db');
+//require('./models/db');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -14,6 +14,28 @@ var login = require('./routes/login');
 var routesApi = require('./app_api/routes/index');
 
 var app = express();
+
+var dbConfig = require('./config/database.config.js');
+var mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
+
+
+
+mongoose.connection.on('error', function() {
+    console.log('Could not connect to the database. Exiting now...');
+    process.exit();
+});
+mongoose.connection.once('open', function() {
+    console.log("Successfully connected to the database");
+});
+
+// define a simple route
+app.get('/', function(req, res){
+    res.json({"message": "Welcome to the Note DB page."});
+});
+
+require('./app/routes/note.routes.js')(app);
 
 
 
@@ -36,9 +58,11 @@ app.use('/listEdit', listEdit);
 app.use('/login', login);
 //app.use('/api', routesApi);
 
+/*
 app.get('/models/db', function(req, res) {
     var cursor = dbURI.collection('Assign4').find();
 });
+*/
 
 
 // define a simple route

@@ -15,6 +15,8 @@ var routesApi = require('./app_api/routes/index');
 
 var app = express();
 
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -37,6 +39,16 @@ app.use('/login', login);
 app.get('/models/db', function(req, res) {
     var cursor = dbURI.collection('Assign4').find();
 });
+
+
+// define a simple route
+app.get('/', function(req, res){
+    res.json({"message": "Welcome to Assign4 DB."});
+});
+
+
+// Require Assign4 routes
+require('./app_api/routes/Assign4.routes.js')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

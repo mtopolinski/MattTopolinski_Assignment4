@@ -1,3 +1,4 @@
+/*
 module.exports = function(app) {
 
     var Assign4 = require('./routes/list.js');
@@ -18,4 +19,10 @@ module.exports = function(app) {
 
     // Delete a Note with noteId
     app.delete('/Assign4s/:Assign4Id', Assign4s.delete);
+}
+
+*/
+
+module.exports = function(app) {
+
 }

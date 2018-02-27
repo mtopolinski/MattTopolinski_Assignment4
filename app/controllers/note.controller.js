@@ -1,4 +1,7 @@
-var Note = require('../models/note.model.js');
+
+var mongoose = require('mongoose');
+mongoose.set('debug', true);
+var Note = mongoose.model('Note');
 
 exports.create = function(req, res) {
     // Create and Save a new Note
@@ -21,9 +24,12 @@ exports.create = function(req, res) {
 
 exports.findUser = function(req, res) {
     // Retrieve Note matching Username
-    Note.find(req.params.noteUsername, function(err, data){
+    Note.findById(req.params.noteId, function(err, data) {
+
+        console.log(err, data);
+
         if(err) {
-            res.status(500).send({message: "Could not find matching Username " + req.params.noteUsername});
+            res.status(500).send({message: "Could not find matching Username " + req.params.noteId});
         } else {
             res.json(data);
         }

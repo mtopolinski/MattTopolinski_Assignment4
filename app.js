@@ -5,12 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+require('./app/models/note.model.js');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 var list = require('./routes/list');
 var listEdit = require('./routes/listEdit');
 var login = require('./routes/login');
-var routesApi = require('./app_api/routes/index');
+var routesApi = require('./app/routes/note.routes');
 
 var app = express();
 
@@ -34,10 +36,6 @@ app.get('/', function(req, res){
     res.json({"message": "Welcome to the Note DB page."});
 });
 
-require('./app/routes/note.routes.js')(app);
-
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -49,6 +47,7 @@ app.use('/users', users);
 app.use('/list', list);
 app.use('/listEdit', listEdit);
 app.use('/login', login);
+app.use('/test', routesApi);
 
 
 // define a simple route
@@ -56,9 +55,6 @@ app.get('/', function(req, res){
     res.json({"message": "Welcome to Assign4 DB."});
 });
 
-
-// Require Assign4 routes
-require('./app_api/routes/Assign4.routes.js')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

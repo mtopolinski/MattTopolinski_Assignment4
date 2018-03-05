@@ -11,7 +11,7 @@ exports.create = function(req, res) {
 
     var note = new Note({title: req.body.title || "Untitled Note", content: req.body.content});
 
-    note.save(function(err, data) {
+    Note.save(function(err, data) {
         if(err) {
             console.log(err);
             res.status(500).send({message: "Some error occurred while creating the Note."});
@@ -24,12 +24,12 @@ exports.create = function(req, res) {
 
 exports.findUser = function(req, res) {
     // Retrieve Note matching Username
-    Note.findById(req.params.noteId, function(err, data) {
+    Note.find({_id: req.params.id}, function(err, data) {
 
         console.log(err, data);
 
         if(err) {
-            res.status(500).send({message: "Could not find matching Username " + req.params.noteId});
+            res.status(500).send({message: "Could not find matching Username " + req.params.id});
         } else {
             res.json(data);
         }
@@ -39,9 +39,9 @@ exports.findUser = function(req, res) {
 
 exports.findTitle = function(req, res) {
     // Find a single note with a Title
-    Note.find(req.params.noteTitle, function(err, data) {
+    Note.find({_id: req.params.id, 'Notes.Title': req.params.title}, function(err, data) {
         if(err) {
-            res.status(500).send({message: "Could not find matching Title " + req.params.noteTitle});
+            res.status(500).send({message: "Could not find matching Title " + req.params.title});
         } else {
             res.json(data);
         }
@@ -69,10 +69,20 @@ exports.update = function(req, res) {
 
 exports.delete = function(req, res) {
     // Delete a note with the specified Title
-    Note.remove({_title: req.params.noteTitle}, function(err, data) {
+    Note.find({_id: req.params.id, 'Notes.Title': req.params.title}, function(err, data) {
         if(err) {
             res.status(500).send({message: "Could not locate Title " + req.params.title});
-        } else {
+        } else if (data) {
+            var array = data[0].Notes;
+
+            for (n in array)
+            {
+                if (n.Title === req.params.title)
+                {
+                    console.log("testing");
+                }
+            }
+            data.Notes.
             res.json({message: "Note deleted"})
         }
     });

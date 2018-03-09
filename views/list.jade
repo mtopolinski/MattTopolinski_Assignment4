@@ -18,49 +18,32 @@ block content
                             a(href='/listEdit/') List Editor
     .row.page-header
         .col-lg-12
-            h1 Assignment 3 List Page
+            h1 Assignment 4 List Page
             h3 Please refer to the following list of notes:
     .row
         .col-xs-12.col-md-6
         p
-            P
-            a(href='/listEdit/') Listing 1
-            | <br /><br />
-            a(href='/listEdit/') Listing 2
-            | <br /><br />
-            a(href='/listEdit/') Listing 3
-            | <br /><br />
-            a(href='/listEdit/') Listing 4
-            | <br /><br />
-            a(href='/listEdit/') Listing 5
-            | <br /><br />
-            a(href='/listEdit/') Listing 6
-            | <br /><br />
-            a(href='/listEdit/') Listing 7
-            | <br /><br />
-            a(href='/listEdit/') Listing 8
-            | <br /><br />
-            a(href='/listEdit/') Listing 9
-            | <br /><br />
-            a(href='/listEdit/') Listing 10
-            | <br /><br />
+
+            ul
+                for listObject in notes
+                    li= 'User ID: '+listObject._id
+                    li= 'Username: '+listObject.Username
+                    li= 'Password: '+listObject.Password
+                    li= 'Title: '+listObject.Notes.Title
+                    li= 'Contents: '+listObject.Notes.Contents
+                    a(href='/test/users/'+listObject._id+'/notes/'+listObject.Notes.Title): button.btn.btn-default.pull-left(type="button") Edit this Note
+                else
+                    li no objects
+
+
+
 
 
     .row
         .col-xs-12.col-md-6
             .form-group
-            a(href='/users/:id/notes') Find Note By Username
-            h1 Username List
-            <tr>
-            <td>
-            a(href='/users/test/notes')
-            //a(href='/users/"<%= note[i]._username%>"/notes><%= note[i].username%')
-
-
-    .row
-        .col-xs-12.col-md-6
-            .form-group
-            a(href='/listEdit'): button.btn.btn-default.pull-left(type="button") Add a New List
+                | <br /><br />
+                | <br /><br />
+            a(href='/listEdit'): button.btn.btn-default.pull-left(type="button") Add a New Note
         .col-xs-12.col-md-4
-            | <br /><br />
             | <br /><br />

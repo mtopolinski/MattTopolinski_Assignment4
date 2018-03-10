@@ -18,16 +18,25 @@ block content
                             a(href='/list/') List Page
     .row.page-header
         .col-lg-12
-            h1 Assignment 3 List Editor
-            h3 To update the current list, please enter your data below:
+            h1 Assignment 4 Note Editor
+            h3 To update the current note, please enter your data below:
+
     .row
         .col-xs-12.col-md-6
             .form-group
-                label.col-sm-2.control-label(for="notes") Notes
+                label.col-sm-2.control-label(for="notes") ID
                 .col-sm-10
-                    textarea#notes.form-control(notes="notes", rows="20")
+                    textarea#notes.form-control(notes="notes", rows="1")
                     <br /><br/>
-            a(href='/listEdit'): button.btn.btn-default.pull-right(type="button") Delete
-            a(href='/list'): button.btn.btn-primary.pull-right(type="button") Save
-        .col-xs-12.col-md-4
-            <br /><br/>
+                label.col-sm-2.control-label(for="notes") Title
+                .col-sm-10
+                    textarea#notes.form-control(notes="notes", rows="1")
+                    <br /><br/>
+                label.col-sm-2.control-label(for="notes") Contents
+                .col-sm-10
+                    textarea#notes.form-control(notes="notes", rows="5")
+                    <br /><br/>
+                    a(href='/listEdit'): button.btn.btn-default.pull-right(type="button") Delete
+                    a(href='/list'): button.btn.btn-primary.pull-right(type="button") Update
+                    .col-xs-12.col-md-4
+                        <br /><br/>

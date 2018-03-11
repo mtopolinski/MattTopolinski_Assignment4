@@ -9,9 +9,9 @@ exports.create = function(req, res) {
         res.status(400).send({message: "Note can not be empty"});
     }
 
-    var note = new Note({title: req.body.title || "Untitled Note", content: req.body.content});
+    var note = new Note({title: req.body.title || "Untitled Note", content: req.body.contents});
 
-    Note.save(function(err, data) {
+    note.save(function(err, data) {
         if(err) {
             console.log(err);
             res.status(500).send({message: "Some error occurred while creating the Note."});
@@ -66,6 +66,7 @@ exports.update = function(req, res) {
         });
     });
 };
+
 
 exports.delete = function(req, res) {
     // Delete a note with the specified Title

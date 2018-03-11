@@ -11,6 +11,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var list = require('./routes/list');
 var listEdit = require('./routes/listEdit');
+var listAdd = require('./routes/listAdd');
 var login = require('./routes/login');
 var routesApi = require('./app/routes/note.routes');
 
@@ -40,12 +41,18 @@ app.get('/', function(req, res){
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/list', list);
 app.use('/listEdit', listEdit);
+app.use('/listAdd', listAdd);
 app.use('/login', login);
 app.use('/test', routesApi);
 

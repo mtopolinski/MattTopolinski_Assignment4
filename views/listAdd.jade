@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .row.page-header
+        .col-lg-12
+            h1 Assignment 4 Note Editor
+            h3 To update the current note, please enter your data below:
+
+    .row
+        .col-xs-12.col-md-6
+            form.form-horizontal(action="", method="post", role="form")
+                .form-group
+                    label.col-sm-2.control-label(for="title") Title
+                    .col-sm-10
+                        input#title.form-control(name="title")
+                .form-group
+                    label.col-sm-2.control-label(for="content") Contents
+                    .col-sm-10
+                        textarea#content.form-control(name="content", rows="5")
+                button.btn.btn-default.pull-right Add
+        .col-xs-12.col-md-4

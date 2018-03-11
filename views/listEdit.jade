@@ -1,21 +1,6 @@
 extends layout
 
 block content
-    body
-        .navbar.navbar-default.navbar-fixed-top
-            .container
-                .navbar-header
-                    a.navbar-brand Site Navigation
-                    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                #navbar-main.navbar-collapse.collapse
-                    ul.nav.navbar-nav
-                        li
-                            a(href='/login/') Login Page
-                        li
-                            a(href='/list/') List Page
     .row.page-header
         .col-lg-12
             h1 Assignment 4 Note Editor
@@ -23,20 +8,17 @@ block content
 
     .row
         .col-xs-12.col-md-6
-            .form-group
-                label.col-sm-2.control-label(for="notes") ID
-                .col-sm-10
-                    textarea#notes.form-control(notes="notes", rows="1")
-                    <br /><br/>
-                label.col-sm-2.control-label(for="notes") Title
-                .col-sm-10
-                    textarea#notes.form-control(notes="notes", rows="1")
-                    <br /><br/>
-                label.col-sm-2.control-label(for="notes") Contents
-                .col-sm-10
-                    textarea#notes.form-control(notes="notes", rows="5")
-                    <br /><br/>
-                    a(href='/listEdit'): button.btn.btn-default.pull-right(type="button") Delete
-                    a(href='/list'): button.btn.btn-primary.pull-right(type="button") Update
-                    .col-xs-12.col-md-4
-                        <br /><br/>
+            form.form-horizontal(action="", method="put", role="form")
+                .form-group
+                    label.col-sm-2.control-label(for="title") Title
+                    .col-sm-10
+                        input#title.form-control(name="title")
+                .form-group
+                    label.col-sm-2.control-label(for="contents") Contents
+                    .col-sm-10
+                        input#contents.form-control(name="contents")
+                button.btn.btn-default.pull-right Update
+footer
+    .row
+        .col-xs-12
+            small &copy; CIS 385

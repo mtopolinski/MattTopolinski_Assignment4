@@ -20,12 +20,10 @@ router.post('/', function(req, res, next) {
 
     const path = 'http://localhost:3000/test/users/'+req.params.id+'/notes';
     var postdata = {
-        Username: 'new user',
-        Password: 'ne_pass',
-        Notes: {
+
         title: req.body.title,
         contents: req.body.contents
-    }
+
     };
     const requestOptions = {
         url : path,

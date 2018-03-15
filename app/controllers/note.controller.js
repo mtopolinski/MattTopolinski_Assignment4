@@ -9,7 +9,7 @@ exports.create = function(req, res) {
         res.status(400).send({message: "Note can not be empty"});
     }
 
-    var note = new Note({title: req.body.title || "Untitled Note", content: req.body.contents});
+    var note = new Note({Username: req.body.username || "Untitled", Password: req.body.password || 'Unititled', Notes: {Title: req.body.title || "Untitled Note", Contents: req.body.contents}});
 
     note.save(function(err, data) {
         if(err) {
